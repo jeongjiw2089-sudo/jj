@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4ff">
+  <meta name="description" content="MOOD:ON — 지금 내 기분에 맞는 음악을 발견하는 순간">
+  <title>MOOD:ON — 오늘의 기분을 플레이하다</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="background-ornament ornament-one" aria-hidden="true"></div>
+  <div class="background-ornament ornament-two" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button type="button" class="brand" id="home-logo" aria-label="MOOD:ON 홈으로"><span class="brand-icon">♫</span><span>MOOD<span class="brand-accent">:ON</span></span></button>
+      <div class="top-actions"><span class="top-tag">YOUR DAILY SOUNDTRACK</span><button id="saved-nav" type="button" class="icon-button saved-nav" aria-label="저장한 노래 보기">♡ <span id="saved-count">0</span></button></div>
+    </header>
+
+    <main id="main-content">
+      <section class="page page-home active" id="page-home" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="live-dot"></span> FEEL YOUR MOMENT</p>
+            <h1 id="hero-title">오늘의 기분을<br><span class="gradient-word">플레이</span>해 볼까?</h1>
+            <p class="hero-description">말로 설명하기 어려운 오늘의 기분까지.<br>지금 너에게 꼭 어울리는 노래를 골라줄게.</p>
+            <button class="primary-button hero-cta" id="start-button" type="button">나만의 플레이리스트 만들기 <span aria-hidden="true">↗</span></button>
+            <div class="hero-footnote"><span class="sparkle">✳</span> 기분에 따라 달라지는 너만의 음악 취향</div>
+          </div>
+          <div class="hero-art" aria-label="앨범 커버 느낌의 장식 그래픽">
+            <div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div>
+            <div class="floating-note note-one">♪</div><div class="floating-note note-two">✦</div>
+            <div class="hero-record"><div class="record-ring ring-a"></div><div class="record-ring ring-b"></div><div class="record-center"><span>MOOD<br><b>:ON</b></span></div></div>
+            <div class="art-pill pill-top">✦ feeling good</div><div class="art-pill pill-bottom">♫ now playing your mood</div>
+          </div>
+        </div>
+        <div class="feature-strip"><div><span class="feature-icon lavender">☁</span><p><b>지금의 기분</b><small>마음부터 알아볼게</small></p></div><div><span class="feature-icon pink">◈</span><p><b>취향 저격</b><small>너다운 사운드 찾기</small></p></div><div><span class="feature-icon yellow">♫</span><p><b>오늘의 플레이리스트</b><small>매일 다른 음악 발견</small></p></div></div>
+      </section>
+
+      <section class="page page-form" id="page-form" aria-labelledby="form-title" hidden>
+        <div class="section-heading"><button class="text-back" id="back-home" type="button">← 홈으로</button><span class="step-text">01 / 02 · MOOD CHECK</span></div>
+        <div class="form-intro"><p class="eyebrow">LET'S FIND YOUR SOUND</p><h2 id="form-title">지금 네 마음은<br>어떤 색이야?</h2><p>몇 가지만 알려줘. 지금 이 순간에 어울리는 곡을 고를게.</p></div>
+        <form id="mood-form" novalidate>
+          <div class="field-card" data-field="mood"><div class="field-label"><span class="field-number">01</span><div><h3>지금 기분은 어때? <em>*</em></h3><p>가장 가까운 감정을 하나 골라줘.</p></div></div><div class="options-grid mood-grid" id="mood-options"></div></div>
+          <div class="field-card" data-field="weather"><div class="field-label"><span class="field-number">02</span><div><h3>창밖 날씨는? <em>*</em></h3><p>오늘의 공기까지 담아볼게.</p></div></div><div class="options-grid compact-grid" id="weather-options"></div></div>
+          <div class="field-card" data-field="activity"><div class="field-label"><span class="field-number">03</span><div><h3>지금 뭐 하고 있어? <em>*</em></h3><p>지금 이 순간에 딱 맞는 음악으로.</p></div></div><div class="options-grid compact-grid" id="activity-options"></div></div>
+          <div class="field-card" data-field="genres"><div class="field-label"><span class="field-number">04</span><div><h3>좋아하는 장르는? <em>*</em></h3><p>여러 개 골라도 좋아.</p></div></div><div class="options-grid compact-grid" id="genre-options"></div></div>
+          <div class="field-card" data-field="vibe"><div class="field-label"><span class="field-number">05</span><div><h3>원하는 음악의 결은? <em>*</em></h3><p>오늘의 분위기를 정해보자.</p></div></div><div class="options-grid compact-grid" id="vibe-options"></div></div>
+          <div class="field-card"><div class="field-label"><span class="field-number">06</span><div><h3>음악의 빠르기는?</h3><p>슬라이더를 움직여봐.</p></div></div><div class="tempo-wrap"><div class="tempo-number"><strong id="tempo-value">105</strong><span>BPM · <span id="tempo-description">적당히 리드미컬</span></span></div><input id="tempo" name="tempo" type="range" min="60" max="180" step="1" value="105" aria-label="원하는 음악 빠르기"><div class="range-labels"><span>느긋하게</span><span>에너지 넘치게</span></div></div></div>
+          <div class="field-card" data-field="language"><div class="field-label"><span class="field-number">07</span><div><h3>어떤 언어의 음악을 들을래? <em>*</em></h3><p>마음 가는 언어로 골라줘.</p></div></div><div class="options-grid compact-grid" id="language-options"></div></div>
+          <div class="field-card"><div class="field-label"><span class="field-number">08</span><div><h3>몇 곡을 들을까?</h3><p>가볍게 듣거나, 오래 머무르거나.</p></div></div><div class="options-grid count-grid" id="count-options"></div></div>
+          <p class="validation-message" id="validation-message" role="alert" aria-live="polite"></p>
+          <button type="submit" class="primary-button submit-button">내 플레이리스트 만나기 <span aria-hidden="true">↗</span></button>
+        </form>
+      </section>
+
+      <section class="page page-results" id="page-results" aria-labelledby="results-title" hidden>
+        <div class="section-heading"><button class="text-back" id="back-form" type="button">← 다시 선택하기</button><span class="step-text">02 / 02 · YOUR MIX</span></div>
+        <div class="results-top"><p class="eyebrow">MADE JUST FOR YOU</p><h2 id="results-title">네 오늘을 위한<br><span class="gradient-word">사운드트랙.</span></h2><p id="results-comment" class="results-comment"></p><div id="selected-tags" class="selected-tags"></div></div>
+        <div class="playlist-header"><div><p class="eyebrow">TODAY'S PLAYLIST</p><h3 id="playlist-title"></h3><p id="playlist-subtitle" class="playlist-subtitle"></p></div><div class="playlist-emblem">♫</div></div>
+        <div id="song-list" class="song-list" aria-live="polite"></div>
+        <div class="result-actions"><button id="reroll-button" type="button" class="primary-button">다른 노래도 추천해 줘 ↻</button><button id="copy-playlist" type="button" class="secondary-button">플레이리스트 복사 ⧉</button><button id="reset-button" type="button" class="secondary-button">처음부터 다시</button></div>
+      </section>
+
+      <section class="page page-saved" id="page-saved" aria-labelledby="saved-title" hidden>
+        <div class="section-heading"><button class="text-back" id="back-from-saved" type="button">← 돌아가기</button><span class="step-text">YOUR COLLECTION</span></div>
+        <div class="saved-heading"><p class="eyebrow">KEEP YOUR FAVORITES</p><h2 id="saved-title">마음에 남은<br><span class="gradient-word">노래들.</span></h2><p>하트를 누른 노래들은 이곳에 모여 있어.</p></div><div id="saved-song-list" class="song-list"></div>
+      </section>
+    </main>
+    <footer class="footer"><span>MOOD:ON © 2026</span><span>MADE FOR YOUR EVERY MOOD ♡</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
